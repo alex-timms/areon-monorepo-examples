@@ -19,7 +19,7 @@ public class Main {
 
         final String channel = "aeron:ipc";
         final int streamId = 10;
-        final int sendCount = 1_000_000;
+        final int sendCount = 1000000;
         final IdleStrategy idleStrategySend = new BusySpinIdleStrategy();
         final IdleStrategy idleStrategyReceive = new BusySpinIdleStrategy();
         final ShutdownSignalBarrier barrier = new ShutdownSignalBarrier();
@@ -61,14 +61,18 @@ public class Main {
 
         //Step 6: Start the runners
         AgentRunner.startOnThread(sendAgentRunner);
+        System.out.println("send agent started");
 
         long startTime = System.currentTimeMillis();
         AgentRunner.startOnThread(receiveAgentRunner);
+        System.out.println("receive agent started");
 
         //wait for the final item to be received before closing
+        System.out.println("waiting for barrier");
         barrier.await();
+        System.out.println("barrier released");
         long endTime = System.currentTimeMillis();
-        System.out.printf("Process time: %s", endTime - startTime);
+        System.out.println(String.format("Process time: %sms", endTime - startTime));
 
         //close the resources
         receiveAgentRunner.close();
