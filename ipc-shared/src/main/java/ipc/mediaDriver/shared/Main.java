@@ -5,12 +5,12 @@ import io.aeron.Publication;
 import io.aeron.Subscription;
 import io.aeron.driver.MediaDriver;
 import io.aeron.driver.ThreadingMode;
+import ipc.agents.ReceiveAgent;
+import ipc.agents.SendAgent;
 import org.agrona.concurrent.AgentRunner;
 import org.agrona.concurrent.BusySpinIdleStrategy;
 import org.agrona.concurrent.IdleStrategy;
 import org.agrona.concurrent.ShutdownSignalBarrier;
-import ajt.agrona.custom.agents.ReceiveAgent;
-import ajt.agrona.custom.agents.SendAgent;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
