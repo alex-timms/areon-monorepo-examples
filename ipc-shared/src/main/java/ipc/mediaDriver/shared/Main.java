@@ -1,4 +1,4 @@
-package org.example;
+package ipc.mediaDriver.shared;
 
 import io.aeron.Aeron;
 import io.aeron.Publication;
@@ -9,8 +9,8 @@ import org.agrona.concurrent.AgentRunner;
 import org.agrona.concurrent.BusySpinIdleStrategy;
 import org.agrona.concurrent.IdleStrategy;
 import org.agrona.concurrent.ShutdownSignalBarrier;
-import org.example.agents.ReceiveAgent;
-import org.example.agents.SendAgent;
+import ipc.agents.ReceiveAgent;
+import ipc.agents.SendAgent;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.

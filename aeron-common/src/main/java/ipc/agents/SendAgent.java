@@ -1,4 +1,4 @@
-package org.example.agents;
+package ipc.agents;
 
 import io.aeron.Publication;
 import org.agrona.concurrent.Agent;

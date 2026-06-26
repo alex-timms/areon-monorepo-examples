@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>areon-demo</artifactId>
+    <artifactId>areon-monorepo-examples</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -13,6 +13,14 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>aeron-common</module>
+        <module>ipc-shared</module>
+        <module>ipc-dedicated</module>
+    </modules>
 
     <dependencies>
         <dependency>
@@ -37,7 +45,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>org.example.Main</mainClass>
+                                    <mainClass>org.example.ipc.mediaDriver.shared.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

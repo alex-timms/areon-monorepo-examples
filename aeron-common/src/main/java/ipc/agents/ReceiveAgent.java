@@ -1,4 +1,4 @@
-package org.example.agents;
+package ipc.agents;
 
 import io.aeron.Subscription;
 import io.aeron.logbuffer.Header;
