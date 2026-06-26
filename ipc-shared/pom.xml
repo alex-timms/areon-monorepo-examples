@@ -32,7 +32,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>ajt.repo.ipc.mediaDriver.shared.Main</mainClass>
+                                    <mainClass>ipc.mediaDriver.shared.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
