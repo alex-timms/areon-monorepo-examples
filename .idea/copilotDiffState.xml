@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/.gitignore">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/.gitignore" />
+              <option name="originalContent" value="target/&#10;!.mvn/wrapper/maven-wrapper.jar&#10;!**/src/main/**/target/&#10;!**/src/test/**/target/&#10;.kotlin&#10;&#10;### IntelliJ IDEA ###&#10;.idea/modules.xml&#10;.idea/jarRepositories.xml&#10;.idea/compiler.xml&#10;.idea/libraries/&#10;*.iws&#10;*.iml&#10;*.ipr&#10;&#10;### Eclipse ###&#10;.apt_generated&#10;.classpath&#10;.factorypath&#10;.project&#10;.settings&#10;.springBeans&#10;.sts4-cache&#10;&#10;### NetBeans ###&#10;/nbproject/private/&#10;/nbbuild/&#10;/dist/&#10;/nbdist/&#10;/.nb-gradle/&#10;build/&#10;!**/src/main/**/build/&#10;!**/src/test/**/build/&#10;&#10;### VS Code ###&#10;.vscode/&#10;&#10;### Mac OS ###&#10;.DS_Store" />
+              <option name="updatedContent" value="target/&#10;dependency-reduced-pom.xml&#10;!.mvn/wrapper/maven-wrapper.jar&#10;!**/src/main/**/target/&#10;!**/src/test/**/target/&#10;.kotlin&#10;&#10;### IntelliJ IDEA ###&#10;.idea/modules.xml&#10;.idea/jarRepositories.xml&#10;.idea/compiler.xml&#10;.idea/libraries/&#10;*.iws&#10;*.iml&#10;*.ipr&#10;&#10;### Eclipse ###&#10;.apt_generated&#10;.classpath&#10;.factorypath&#10;.project&#10;.settings&#10;.springBeans&#10;.sts4-cache&#10;&#10;### NetBeans ###&#10;/nbproject/private/&#10;/nbbuild/&#10;/dist/&#10;/nbdist/&#10;/.nb-gradle/&#10;build/&#10;!**/src/main/**/build/&#10;!**/src/test/**/build/&#10;&#10;### VS Code ###&#10;.vscode/&#10;&#10;### Mac OS ###&#10;.DS_Store" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
