@@ -20,6 +20,7 @@
         <module>aeron-common</module>
         <module>ipc-shared</module>
         <module>ipc-dedicated</module>
+        <module>ipc-basic-single</module>
     </modules>
 
     <dependencies>
