@@ -1,4 +1,7 @@
 either run the sh file in resources, or the following mvn command in the terminal:
+```bash
+cd ipc-shared
+```
 
 ```bash
 mvn -DskipTests package && mvn exec:java -Dexec.mainClass=ipc.mediaDriver.shared.Main

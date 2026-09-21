@@ -21,6 +21,7 @@
         <module>ipc-shared</module>
         <module>ipc-dedicated</module>
         <module>ipc-basic-single</module>
+        <module>two-way-echo</module>
     </modules>
 
     <dependencies>

@@ -22,6 +22,7 @@ public class Main {
         final IdleStrategy idle = new SleepingIdleStrategy();
         // https://aeron.io/docs/agrona/direct-buffer/
         final UnsafeBuffer unsafeBuffer = new UnsafeBuffer(ByteBuffer.allocate(256));
+        // https://aeron.io/docs/aeron/media-driver/
         try (MediaDriver driver = MediaDriver.launch();
              Aeron aeron = Aeron.connect();
              // Subscription which will be polled in order to receive message
