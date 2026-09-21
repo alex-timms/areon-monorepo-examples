@@ -4,13 +4,14 @@ import io.aeron.Aeron;
 import io.aeron.Publication;
 import io.aeron.Subscription;
 import io.aeron.logbuffer.FragmentHandler;
+import org.agrona.concurrent.Agent;
 import org.agrona.concurrent.IdleStrategy;
 import org.agrona.concurrent.SleepingIdleStrategy;
 import org.agrona.concurrent.UnsafeBuffer;
 
 import java.nio.ByteBuffer;
 
-public class OddEvenService {
+public class OddEvenService implements Agent {
 
     private Aeron aeron;
     private String channel;
@@ -45,4 +46,13 @@ public class OddEvenService {
     }
 
 
+    @Override
+    public int doWork() throws Exception {
+        return 0;
+    }
+
+    @Override
+    public String roleName() {
+        return "";
+    }
 }
