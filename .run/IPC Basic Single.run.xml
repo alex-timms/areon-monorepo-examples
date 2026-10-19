@@ -3,6 +3,7 @@
     <option name="MAIN_CLASS_NAME" value="ajt.ipc.basic.Main" />
     <module name="ipc-basic-single" />
     <option name="VM_PARAMETERS" value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" />
+    <option name="WORKING_DIRECTORY" value="/Users/alexander.timms/Documents/Personal/gitRepos/areon-monorepo-examples" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

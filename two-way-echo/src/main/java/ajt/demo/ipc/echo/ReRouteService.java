@@ -23,6 +23,7 @@ public class ReRouteService implements Agent, AutoCloseable {
     private UnsafeBuffer unsafeBuffer;
     private final Deque<String> pendingResponses = new ArrayDeque<>();
     private final FragmentHandler handler = (buffer, offset, length, header) -> {
+        System.out.println("Inside ReRouteService Handler");
         String payload = buffer.getStringAscii(offset);
         System.out.println("received:" + payload);
         pendingResponses.addLast(payload + payload);
@@ -35,6 +36,7 @@ public class ReRouteService implements Agent, AutoCloseable {
 
     @Override
     public void onStart() {
+        System.out.println("Starting ReRouteService");
         // create subscriber to channel 2
         sub = aeron.addSubscription(channel, 1);
         // create publisher to channel 1
@@ -45,6 +47,7 @@ public class ReRouteService implements Agent, AutoCloseable {
 
     @Override
     public void onClose() {
+        System.out.println("Closing ReRouteService");
         if (sub != null) {
             sub.close();
         }
@@ -56,7 +59,6 @@ public class ReRouteService implements Agent, AutoCloseable {
     @Override
     public int doWork() {
         int workCount = 0;
-        System.out.println("Inside ReRouteService");
         final String nextResponse = pendingResponses.peekFirst();
         if (nextResponse != null) {
             unsafeBuffer.putStringAscii(0, nextResponse);
