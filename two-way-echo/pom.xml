@@ -33,7 +33,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>ajt.demo.ipc.echo.Main</mainClass>
+                                    <mainClass>ajt.demo.ipc.echo.Main2</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

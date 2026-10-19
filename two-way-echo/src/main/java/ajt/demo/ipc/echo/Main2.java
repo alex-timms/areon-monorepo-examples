@@ -5,6 +5,8 @@ import io.aeron.Publication;
 import io.aeron.Subscription;
 import io.aeron.driver.MediaDriver;
 import io.aeron.logbuffer.FragmentHandler;
+import org.agrona.CloseHelper;
+import org.agrona.concurrent.AgentRunner;
 import org.agrona.concurrent.IdleStrategy;
 import org.agrona.concurrent.SleepingIdleStrategy;
 import org.agrona.concurrent.UnsafeBuffer;
@@ -23,8 +25,8 @@ public class Main2 {
         // set channel type
         final String channel = "aeron:ipc";
         // set message
-        final int message = 2;
-        // set up idle strategu
+        final String message = "my message";
+        // set up idle strategy
         final IdleStrategy idle = new SleepingIdleStrategy();
         // set up buffer to contain message to send
         final UnsafeBuffer unsafeBuffer = new UnsafeBuffer(ByteBuffer.allocate(256));
@@ -35,32 +37,43 @@ public class Main2 {
              // create subscriber to channel 2
              Subscription sub = aeron.addSubscription(channel, 2);
              // create publisher to channel 1
-             Publication pub = aeron.addPublication(channel, 1)) {
+             Publication pub = aeron.addPublication(channel, 1)){
+
+            // Start the middle service first so stream 1 has an active subscriber.
+            var reRouteService = new ReRouteService(aeron, channel);
+            AgentRunner reRouteServiceRunner = new AgentRunner(
+                    idle,
+                    Throwable::printStackTrace,
+                    null,
+                    reRouteService);
+            AgentRunner.startOnThread(reRouteServiceRunner);
+
             while (!pub.isConnected()) {
                 idle.idle();
             }
             // prep message
-            unsafeBuffer.putInt(0, message);
-            // create middle service that subscribes to channel 1 and publishes to channel 2
-            var oddEvenService = new OddEvenService(aeron, channel);
-            oddEvenService.start();
+            unsafeBuffer.putStringAscii(0, message);
+            System.out.println("preparing message to send in channel 1:" + message);
+
             // send from initial publisher & start timer
             System.out.println("sending:" + message);
+            final long startTime = System.currentTimeMillis();
             while (pub.offer(unsafeBuffer) < 0) {
                 idle.idle();
             }
-            long endTime = System.currentTimeMillis();
-            long startTime = System.currentTimeMillis();
-            FragmentHandler handler = (buffer, offset, length, header) ->
-                    // print result
-                    System.out.println("received:" + buffer.getStringAscii(offset));
-                    endTime = System.currentTimeMillis();
+            final long[] endTime = {startTime};
+            FragmentHandler handler = (buffer, offset, length, header) -> {
+                // print result
+                System.out.println("received:" + buffer.getStringAscii(offset));
+                endTime[0] = System.currentTimeMillis();
+            };
             // consumer from final subscriber
             while (sub.poll(handler, 1) <= 0) {
                 idle.idle();
             }
 
-            System.out.println(String.format("Process time: %sms", endTime - startTime));
+            System.out.println("Process time: " + (endTime[0] - startTime) + "ms");
+            CloseHelper.quietClose(reRouteServiceRunner);
         }
     }
 }
