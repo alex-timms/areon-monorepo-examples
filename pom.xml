@@ -20,6 +20,9 @@
         <module>aeron-common</module>
         <module>ipc-shared</module>
         <module>ipc-dedicated</module>
+        <module>ipc-basic-single</module>
+        <module>two-way-echo</module>
+        <module>trade-request</module>
     </modules>
 
     <dependencies>
